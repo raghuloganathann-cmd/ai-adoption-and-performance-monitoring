@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI Adoption and Performance Monitoring</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <h1>AI Adoption and Performance Monitoring</h1>
+  <p class="sub">Track how many people actually use each AI tool, and whether the tool is accurate and fast enough to keep using.</p>
+
+  <section class="kpis" id="kpis" aria-label="Summary"></section>
+
+  <section class="panel">
+    <h2>Add a tool or log a new reading</h2>
+    <form id="form">
+      <label>Tool name<input name="name" required maxlength="30" placeholder="e.g. Support chatbot"></label>
+      <label>Department
+        <select name="dept"><option>Engineering</option><option>Support</option><option>Sales</option><option>HR</option><option>Finance</option></select>
+      </label>
+      <label>Licensed users<input name="licensed" type="number" min="1" required value="50"></label>
+      <label>Active users (30 days)<input name="active" type="number" min="0" required value="30"></label>
+      <label>Accuracy (%)<input name="accuracy" type="number" min="0" max="100" step="0.1" required value="88"></label>
+      <label>Avg. response time (s)<input name="latency" type="number" min="0" step="0.1" required value="1.5"></label>
+      <label>Hours saved / week<input name="hours" type="number" min="0" step="0.5" required value="10"></label>
+      <button type="submit" class="primary">Save reading</button>
+    </form>
+    <p class="note">Saving a tool name that already exists updates its latest reading.</p>
+  </section>
+
+  <div class="grid2">
+    <section class="panel"><h2>Adoption rate</h2><div id="adoption"></div><p class="note">Vertical line marks the 60% adoption target.</p></section>
+    <section class="panel"><h2>Accuracy</h2><div id="accuracy"></div><p class="note">Vertical line marks the 85% accuracy target.</p></section>
+  </div>
+
+  <section class="panel">
+    <h2>Alerts</h2>
+    <ul class="alerts" id="alerts"></ul>
+  </section>
+
+  <section class="panel">
+    <div class="tools">
+      <h2 style="margin:0">All tools</h2>
+      <label style="flex-direction:row;align-items:center;gap:8px">Department
+        <select id="filter"><option value="All">All</option></select>
+      </label>
+    </div>
+    <div class="scroll"><table>
+      <thead><tr><th>Tool</th><th>Department</th><th>Adoption</th><th>Accuracy</th><th>Response</th><th>Hours saved</th><th>Status</th><th></th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table></div>
+  </section>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
